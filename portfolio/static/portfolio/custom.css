@@ -1,0 +1,30 @@
+/* Styles for navbar links */
+.navbar-nav .nav-link {
+    color: rgba(0,0,0,1) !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: rgba(0,0,0,.5) !important;
+}
+
+/* Body font */
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+/* Styling for blog title */
+#blogtitle {
+    font-size: 6rem;
+}
+
+/* Media query for larger screens */
+@media (min-width: 992px) {
+    /* Font size for home text */
+    #hometext {
+        font-size: 4rem;
+    }
+    /* Font size for blog detail title */
+    #blogdetailtitle {
+        font-size: 5rem;
+    }
+}
