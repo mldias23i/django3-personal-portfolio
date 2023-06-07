@@ -8,9 +8,6 @@ This is my personal portfolio website showcasing information about me, my projec
 - [Getting Started](#getting-started)
 - [Configuration](#configuration)
 - [Running the Application](#running-the-application)
-- [Customization](#customization)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Description
 
