@@ -31,3 +31,6 @@ urlpatterns = [
 
 # Add URL patterns for serving media files during development
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+# Add URL patterns for serving static files during development
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
