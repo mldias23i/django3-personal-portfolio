@@ -19,8 +19,8 @@ To get started with this project, follow the instructions below.
 
 ### Prerequisites
 
-- Python (version X.X.X)
-- Django (version X.X.X)
+- Python
+- Django 
 
 ### Installation
 
