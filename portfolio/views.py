@@ -14,10 +14,10 @@ def birthday(request):
 def submit_birthday(request):
     if request.method == 'POST':
         names = request.POST.getlist('name[]')
-        dinners = request.POST.getlist('info[]')
+        #dinners = request.POST.getlist('info[]')
 
-        for name, dinner in zip(names, dinners):
-            birthday = Birthday(name=name, dinner=dinner)
+        for name in zip(names):
+            birthday = Birthday(name=name)
             birthday.save()
 
         return render(request, 'portfolio/success.html')
