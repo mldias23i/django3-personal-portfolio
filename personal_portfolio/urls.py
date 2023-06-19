@@ -27,6 +27,9 @@ urlpatterns = [
     path('', views.home, name="home"),
     # Include blog app URLs
     path('blog/', include('blog.urls')),
+    # Include birthday URL
+    path('birthday/', views.birthday, name="birthday"),
+    path('submit_birthday/', views.submit_birthday, name='submit_birthday'),
 ]
 
 # Add URL patterns for serving media files during development

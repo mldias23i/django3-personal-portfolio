@@ -13,3 +13,12 @@ class Project(models.Model):
     def __str__(self):
         # Return the title of the project as its string representation
         return self.title
+    
+
+    
+class Birthday(models.Model):
+    name = models.CharField(max_length=100)
+    dinner = models.CharField(max_length=250)
+
+    def __str__(self):
+        return self.name

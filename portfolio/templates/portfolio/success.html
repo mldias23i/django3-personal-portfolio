@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Success Party</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            animation: backgroundAnimation 10s infinite;
+            animation-delay: -1s; /* Delay the animation start by 1 second */
+        }
+
+        @keyframes backgroundAnimation {
+            0% { background-color: #f2f2f2; }
+            50% { background-color: #c1d4e6; }
+            100% { background-color: #f2f2f2; }
+        }
+
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1;
+            animation: shake 0.8s infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(-50%, -50%); }
+            10%, 90% { transform: translate(-50%, -50%) rotate(-2deg); }
+            20%, 80% { transform: translate(-50%, -50%) rotate(2deg); }
+            30%, 50%, 70% { transform: translate(-50%, -50%) rotate(-2deg); }
+            40%, 60% { transform: translate(-50%, -50%) rotate(2deg); }
+        }
+
+        h1 {
+            color: #333;
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .message {
+            color: #555;
+            font-size: 24px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .confetti-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(45deg, #ffac33, #33ff99, #6699ff, #ff99cc, #e1661e);
+            z-index: 1;
+            pointer-events: none;
+            animation: confetti-fall linear infinite;
+        }
+
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            100% {
+                transform: translateY(100vh) translateX(100%);
+            }
+        }
+
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            z-index: 1;
+            pointer-events: none;
+            animation: firework-explode linear infinite;
+        }
+
+        @keyframes firework-explode {
+            0% {
+                transform: scale(0);
+                opacity: 0;
+            }
+            10% {
+                transform: scale(2);
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+            }
+        }
+    </style>
+    <script>
+        function createConfetti() {
+            var confettiContainer = document.querySelector(".confetti-container");
+            
+            for (var i = 0; i < 50; i++) {
+                var confetti = document.createElement("div");
+                confetti.className = "confetti";
+                confetti.style.left = Math.random() * 100 + "%";
+                confetti.style.animationDelay = Math.random() * 3 + "s";
+                confetti.style.animationDuration = Math.random() * 2 + 3 + "s";
+                confettiContainer.appendChild(confetti);
+            }
+        }
+
+        function createFireworks() {
+            var fireworksContainer = document.querySelector(".fireworks-container");
+            var colors = ["#e1661e", "#ffac33", "#33ff99", "#6699ff", "#ff99cc"];
+            
+            for (var i = 0; i < 5; i++) {
+                var firework = document.createElement("div");
+                firework.className = "firework";
+                firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                firework.style.left = Math.random() * 100 + "%";
+                firework.style.top = Math.random() * 100 + "%";
+                firework.style.animationDelay = Math.random() * 5 + "s";
+                firework.style.animationDuration = Math.random() * 2 + 3 + "s";
+                fireworksContainer.appendChild(firework);
+            }
+        }
+    </script>
+</head>
+<body onload="createConfetti(); createFireworks()">
+    <div class="container">
+        <h1>27</h1>
+        <p class="message">Agora é que mete memo meeeedooooo!!!</p>
+    </div>
+    <div class="confetti-container"></div>
+    <div class="fireworks-container"></div>
+</body>
+</html>

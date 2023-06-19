@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Guest Info</title>
+        <style>
+            body {
+                background-color: #f2f2f2;
+                animation: backgroundAnimation 10s infinite;
+            }
+            
+            @keyframes backgroundAnimation {
+                0% { background-color: #f2f2f2; }
+                50% { background-color: #c1d4e6; }
+                100% { background-color: #f2f2f2; }
+            }
+    
+            h1 {
+                color: #e1661e;
+            }
+    
+            .guest {
+                margin-bottom: 10px;
+                background-color: #fff;
+                padding: 10px;
+            }
+    
+            .input-group {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 10px;
+            }
+    
+            .input-group label {
+                margin-right: 10px;
+                display: block;
+                color: #555;
+            }
+    
+            .input-group input[type="text"],
+            .input-group textarea {
+                height: 40px;
+                resize: vertical;
+                color: #555;
+            }
+    
+            .input-group input[type="text"] {
+                width: 300px;
+            }
+    
+            .input-group .styled-input {
+                width: 300px;
+                margin-left: 0;
+                margin-top: 10px;
+                color: #555;
+                background-color: #f9f9f9;
+                border: 1px solid #ccc;
+                padding: 5px;
+            }
+    
+            .input-group .label-group {
+                display: flex;
+                align-items: center;
+                margin-left: 0;
+                margin-top: 10px;
+            }
+    
+            .input-group .label-group label {
+                margin-right: 10px;
+                color: #555;
+            }
+    
+            .button-container {
+                display: flex;
+                /*flex-direction: column;*/
+                margin-top: 10px; 
+                /*margin-left: 10px;*/
+                justify-content: space-between; /* Add this line to evenly distribute the buttons */
+                align-items: center; /* Align buttons to the left */
+            }
+
+            .button {
+                background-color: #337ab7;
+                color: #fff;
+                border: none;
+                padding: 10px 20px;
+                margin-right: 10px;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                border-radius: 5px; /* Add border-radius property */
+            }
+
+            .button:hover {
+                background-color: #23527c;
+            }
+
+            .small-button {
+                width: 30px;
+                height: 30px;
+                background-color: #337ab7;
+                color: #fff;
+                border: none;
+                border-radius: 50%;
+                font-size: 18px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+                transition: background-color 0.3s;
+            }
+
+            .small-button:hover {
+                background-color: #23527c;
+            }
+
+            /* Added styles for the link */
+            .center-link {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .center-link a {
+                color: #555;
+                font-weight: bold;
+                text-decoration: none;
+                padding: 10px 20px;
+                background-color: #337ab7;
+                color: #fff;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+            }
+
+            .center-link a:hover {
+                background-color: #23527c;
+            }
+        </style>
+        <script>
+            function addGuest() {
+                var form = document.getElementById("guestForm");
+                var guestContainer = document.createElement("div");
+                guestContainer.className = "guest";
+    
+                var inputGroup = document.createElement("div");
+                inputGroup.className = "input-group";
+    
+                var nameLabel = document.createElement("label");
+                nameLabel.textContent = "Nome:";
+                inputGroup.appendChild(nameLabel);
+    
+                var nameInput = document.createElement("input");
+                nameInput.type = "text";
+                nameInput.name = "name[]";
+                nameInput.placeholder = "Introduza o nome";
+                inputGroup.appendChild(nameInput);
+    
+                var labelGroup = document.createElement("div");
+                labelGroup.className = "label-group";
+    
+                var dinnerLabel = document.createElement("label");
+                dinnerLabel.textContent = "Introduza o que deseja para jantar:";
+                labelGroup.appendChild(dinnerLabel);
+    
+                var emptyLabel = document.createElement("label");
+                emptyLabel.innerHTML = "&nbsp;";
+                labelGroup.appendChild(emptyLabel);
+                inputGroup.appendChild(labelGroup);
+    
+                var dinnerInput = document.createElement("input");
+                dinnerInput.type = "text";
+                dinnerInput.name = "info[]";
+                dinnerInput.placeholder = "Introduza o jantar";
+                dinnerInput.classList.add("styled-input");
+                inputGroup.appendChild(dinnerInput);
+    
+                guestContainer.appendChild(inputGroup);
+                guestContainer.appendChild(document.createElement("br"));
+    
+                form.insertBefore(guestContainer, form.lastElementChild); // Insert new guest before the button container
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Introduza os seus dados</h1>
+        <form id="guestForm" method="post" action="{% url 'submit_birthday' %}">
+            {% csrf_token %}
+            <div class="guest">
+                <div class="input-group">
+                    <label for="name1">Nome:</label>
+                    <input type="text" id="name1" name="name[]" placeholder="Introduza o nome" required>
+                </div>
+                <div class="input-group">
+                    <div class="label-group">
+                        <label for="text1">Introduza o que deseja para jantar:</label>
+                    </div>
+                    <input type="text" id="text1" name="info[]" placeholder="Introduza o jantar" class="styled-input" style="margin-bottom: 30px;" required>
+                </div>
+            </div>
+
+            <div class="button-container">
+                <button type="submit" class="button">Submeter</button>
+                <button type="button" onclick="addGuest()" class="small-button">+</button>
+            </div>
+        </form>
+        <div class="center-link">
+            <a href="https://ceciliarestaurante.wixsite.com/casacecilia/menus" target="_blank">Menu Casa Cecilia</a>
+        </div>
+    </body>
+</html>
